@@ -41,7 +41,7 @@ for row in table_rows[1:]:
     result["die"].append(tds[2].text)
     result["rate"].append(tds[3].text)
     result["check"].append(tds[4].text)
-    result["count"] += 1
+    result['count'] += 1
 
 data = template(result)
 print(data)
@@ -49,11 +49,12 @@ print(data)
 helper = '''
 
 Column Description:
--city : city
--ChekcInc : Chekced Confirmed Increase
--Dead : Dies
--Incidence : rate
--Inspec : Chekced
+-city: city
+-ChekcInc: Chekced Confirmed Increase
+-Confirm: Confirmed
+-Dead: Dies
+-Incidence: rate
+-Inspec: Chekced
 '''
 
 send(data + helper)
