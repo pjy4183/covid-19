@@ -1,8 +1,9 @@
-def pad(string, length = 10, char = " "):
+def pad (string, length=10, char=" "):
     string = str(string)
+
     if len(string) > length or len(char) > 1:
         return string
-    
+
     strlen = len(string)
     padlen = abs(length - strlen)
     string = string + (char * padlen)
@@ -10,14 +11,14 @@ def pad(string, length = 10, char = " "):
 
 def print_table(lines, header=None, totalwidth=80, mincol=4, splitter=("|", "-", "+")):
     splitter, horiz, cross = splitter
-    
+
     if splitter == "":
         splitter = " "
     if horiz == "":
         horiz = " "
-    if cross =="":
+    if cross == "":
         cross = " "
-    
+
     width = {}
     total = {}
     average = {}
@@ -28,7 +29,7 @@ def print_table(lines, header=None, totalwidth=80, mincol=4, splitter=("|", "-",
         for each in header:
             width[col] = len(each)
             col += 1
-        
+
     num_lines = 0
     for line in lines:
         col = 0
@@ -45,13 +46,12 @@ def print_table(lines, header=None, totalwidth=80, mincol=4, splitter=("|", "-",
             except:
                 total[col] = len(each)
 
-
             col += 1
     num_columns = col
 
     total_of_averages = 0
-    for x in range(0, num_columns):
-        average[x] = int(total[x]/num_lines)
+    for x in range(0,num_columns):
+        average[x] = int( total[x]/num_lines )
         total_of_averages += average[x]
 
     total_of_widths = 0
@@ -74,7 +74,7 @@ def print_table(lines, header=None, totalwidth=80, mincol=4, splitter=("|", "-",
                 fair_average[x] = mincol
 
         if total_diff > 0:
-            while total_diff >0:
+            while total_diff > 0:
                 stole_some = False
                 for x in fair_average:
                     if fair_average[x] > mincol:
@@ -82,16 +82,16 @@ def print_table(lines, header=None, totalwidth=80, mincol=4, splitter=("|", "-",
                         total_diff -= 1
                 if not stole_some:
                     break
-        
+
         width = fair_average
-    
+
     buffer = []
     if header:
         col = 0
-        linebuffer =""
+        linebuffer = ""
         divider = ""
         for each in header:
-            tmp = each
+            tmp=each
             if len(each) > width[col]:
                 tmp = each[0:width[col]]
             linebuffer += splitter + pad(tmp, width[col])
@@ -104,12 +104,13 @@ def print_table(lines, header=None, totalwidth=80, mincol=4, splitter=("|", "-",
 
     for line in lines:
         linebuffer = ""
-        col =0
+        col = 0
         for each in line:
             tmp = each
             if len(each) > width[col]:
                 tmp = each[0:width[col]-2] + ".."
-            
+
+
             linebuffer += splitter + pad(tmp, width[col])
             col += 1
         linebuffer += splitter
