@@ -4,16 +4,18 @@ from noti import send
 from table import print_table
 
 def template(data):
-    
+
+
     '''
     City | Confirm increase | Confirm count | Dies | Rate | Checked(day)
     '''
 
     body = []
-  for i in range(0, data['count']):
-    body.append([data['city'][i], data['prev_rise'][i], data['confirm'][i], data['die'][i], data['rate'][i], data['check'][i]])
+    for i in range(0, data['count']):
+        body.append([data['city'][i], data['prev_rise'][i], data['confirm'][i], data['die'][i], data['rate'][i], data['check'][i]])
+        
   
-  return '<code>' + '\n'.join(print_table(body, ["city", "CheckInc", "Confirm", "Dead", "Incidence", "Inspec"], 80, 6)) + '</code>'
+    return '<code>' + '\n'.join(print_table(body, ["city", "CheckInc", "Confirm", "Dead", "Incidence", "Inspec"], 80, 6)) + '</code>'
 
 BASE_URL = "http://ncov.mohw.go.kr/bdBoardList_Real.do?brdId=1&brdGubun=13&ncvContSeq=&contSeq=&board_id=&gubun="
 
