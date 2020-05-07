@@ -1,6 +1,6 @@
 from config import TELEGRAM_TOKEN, CHAT_ID
 import requests as rq
-import TELEGRAM_TOKEN
+import telegram
 
 bot = telegram.Bot(token=TELEGRAM_TOKEN)
 
